@@ -1,0 +1,21 @@
+<archetype-descriptor
+        name="gRPCtoJAXRS-archetype">
+        
+    <!--requiredProperties>
+        <requiredProperty key="package"/>
+        <requiredProperty key="root.class"/>
+        <requiredProperty key="servlet.name"/>
+    </requiredProperties-->
+  
+    <fileSets>
+        <fileSet filtered="true" packaged="true">
+            <directory>src/main/java</directory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/proto</directory>
+        </fileSet>
+        <!--fileSet>
+            <directory>src/test/java</directory>
+        </fileSet-->
+    </fileSets>
+</archetype-descriptor>
