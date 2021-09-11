@@ -223,7 +223,7 @@
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}/target/generated-sources/protobuf/java</argument>
-                        <argument>org.jboss.resteasy.test.grpc.${root.class}</argument>
+                        <argument>${package}.${root.class}</argument>
                      </arguments>
                      <systemProperties>
                         <systemProperty>
