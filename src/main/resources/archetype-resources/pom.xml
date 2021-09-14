@@ -13,7 +13,7 @@
       <maven.compiler.target>11</maven.compiler.target>
       <resteasy.version>${resteasy.version}</resteasy.version>
       <package>${package}</package>
-      <root.class>${root.class}</root.class>
+      <root.class>${root-class}</root.class>
       <servlet.name>${servlet.name}</servlet.name>
    </properties>
   
@@ -149,7 +149,7 @@
                </execution>
                <execution>
                   <id>add-test-source</id>
-                  <phase>generate-test-sources</phase>
+                  <phase>process-sources</phase>
                   <goals>
                      <goal>add-test-source</goal>
                   </goals>
