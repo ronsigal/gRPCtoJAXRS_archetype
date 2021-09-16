@@ -3,7 +3,7 @@
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     
     <name>${artifactId}</name>
   
@@ -156,7 +156,7 @@
                   <configuration>
                      <sources>
                         <source>${project.basedir}/target/generated-sources/protobuf/grpc-java/</source>
-                        <source>${project.basedir}/target/generatedSources/</source>
+                        <!--source>${project.basedir}/target/generatedSources/</source-->
                      </sources>
                   </configuration>
                </execution>

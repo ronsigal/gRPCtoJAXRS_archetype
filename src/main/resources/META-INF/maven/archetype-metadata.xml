@@ -1,23 +1,26 @@
 <archetype-descriptor
         name="gRPCtoJAXRS-archetype">
         
-    <requiredProperties>
-        <!--requiredProperty key="package"/-->
-        <requiredProperty key="root-class">
-           <defaultValue>CC</defaultValue>
-        </requiredProperty>
-        <!--requiredProperty key="servlet.name"/-->
-    </requiredProperties>
+   <requiredProperties>
+      <!--requiredProperty key="package"/-->
+      <requiredProperty key="root-class">
+         <defaultValue>CC</defaultValue>
+      </requiredProperty>
+      <!--requiredProperty key="servlet.name"/-->
+   </requiredProperties>
   
-    <fileSets>
-        <fileSet filtered="true" packaged="true">
-            <directory>src/main/java</directory>
-        </fileSet>
-        <fileSet filtered="true">
-            <directory>src/main/proto</directory>
-        </fileSet>
-        <fileSet filtered="true">
-            <directory>src/test/java</directory>
-        </fileSet>
-    </fileSets>
+   <fileSets>
+       <fileSet filtered="true" packaged="true">
+          <directory>src/main/java</directory>
+       </fileSet>
+       <fileSet filtered="true">
+          <directory>src/main/proto</directory>
+       </fileSet>
+       <fileSet>
+          <directory>src/main/webapp/WEB-INF</directory>
+       </fileSet>
+       <fileSet filtered="true">
+          <directory>src/test/java</directory>
+       </fileSet>
+   </fileSets>
 </archetype-descriptor>
