@@ -96,6 +96,14 @@
          <plugin>
             <artifactId>maven-war-plugin</artifactId>
             <version>3.2.3</version>
+            <configuration>
+               <webResources>
+                  <resource>
+                     <directory>${basedir}/target/test-classes</directory>
+                     <targetPath>WEB-INF/classes</targetPath>
+                  </resource>
+               </webResources>
+            </configuration>
          </plugin>
          
          <plugin>
