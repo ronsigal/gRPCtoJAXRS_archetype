@@ -7,9 +7,27 @@ import java.util.logging.Logger;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
 import ${package}.${root-class}ServiceGrpcImpl;
 
+@Path("grpcserver")
 public class ${root-class}_Server {
+
+   @Path("start")
+   @GET
+   public void startGRPC() throws Exception {
+      final ${root-class}_Server server = new ${root-class}_Server();
+      server.start();
+      server.blockUntilShutdown();
+   }
+
+   @Path("stop")
+   @GET
+   public void stopGRPC() throws Exception {
+      stop();
+   }
 
    private static final Logger logger = Logger.getLogger(${root-class}_Server.class.getName());
 
@@ -20,7 +38,7 @@ public class ${root-class}_Server {
     */
    private void start() throws IOException {
       /* The port on which the server should run */
-      int port = 8081;
+      int port = 8082;
       server = ServerBuilder.forPort(port)
             .addService(new ${root-class}ServiceGrpcImpl())
             .build()

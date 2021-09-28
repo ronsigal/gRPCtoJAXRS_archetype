@@ -7,6 +7,10 @@
          <defaultValue>CC</defaultValue>
       </requiredProperty>
       <!--requiredProperty key="servlet.name"/-->
+      <requiredProperty key="context-path">
+         <defaultValue>default</defaultValue>
+      </requiredProperty>
+      
    </requiredProperties>
   
    <fileSets>
