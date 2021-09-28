@@ -135,4 +135,37 @@ public class CC1_Client
          return;
       }
    }
+   
+   
+   @Test
+   public void testLong() throws Exception {
+      jaxrs.example.CC1_proto.Long n = jaxrs.example.CC1_proto.Long.newBuilder().setValue(3).build();
+      jaxrs.example.CC1_proto.Long response;
+      try {
+         response = blockingStub.getLong(n);
+         System.out.println("response: " + response.getValue());
+         jaxrs.example.CC1_proto.Long expected = jaxrs.example.CC1_proto.Long.newBuilder().setValue(4).build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+   
+   @Test
+   public void testLongWrapper() throws Exception {
+      jaxrs.example.CC1_proto.Long n = jaxrs.example.CC1_proto.Long.newBuilder().setValue(5).build();
+      jaxrs.example.CC1_proto.Long response;
+      try {
+         response = blockingStub.getLongWrapper(n);
+         System.out.println("response: " + response.getValue());
+         jaxrs.example.CC1_proto.Long expected = jaxrs.example.CC1_proto.Long.newBuilder().setValue(6).build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
 }
