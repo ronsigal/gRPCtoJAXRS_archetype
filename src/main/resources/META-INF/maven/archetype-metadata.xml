@@ -2,15 +2,7 @@
         name="gRPCtoJAXRS-archetype">
         
    <requiredProperties>
-      <!--requiredProperty key="package"/-->
-      <requiredProperty key="root-class">
-         <defaultValue>CC</defaultValue>
-      </requiredProperty>
-      <!--requiredProperty key="servlet.name"/-->
-      <requiredProperty key="context-path">
-         <defaultValue>default</defaultValue>
-      </requiredProperty>
-      
+      <requiredProperty key="root-class"/>
    </requiredProperties>
   
    <fileSets>

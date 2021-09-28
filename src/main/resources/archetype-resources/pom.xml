@@ -11,10 +11,10 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <maven.compiler.source>11</maven.compiler.source>
       <maven.compiler.target>11</maven.compiler.target>
-      <resteasy.version>${resteasy.version}</resteasy.version>
-      <package>${package}</package>
-      <root.class>${root-class}</root.class>
-      <servlet.name>${servlet.name}</servlet.name>
+      <package>jaxrs.example</package>
+      <resteasy.version>default</resteasy.version>
+      <root.class>default</root.class>
+      <servlet.name>default</servlet.name>
    </properties>
   
    <dependencies>

@@ -72,7 +72,7 @@ public class CC1_Client
       */
    }
 
-   @Test
+   //@Test
    public void testShort() throws Exception {
       jaxrs.example.CC1_proto.Short n = jaxrs.example.CC1_proto.Short.newBuilder().setValue(3).build();
       jaxrs.example.CC1_proto.Short response;
@@ -88,7 +88,7 @@ public class CC1_Client
       }
    }
 
-   @Test
+   //@Test
    public void testShortWrapper() throws Exception {
       jaxrs.example.CC1_proto.Short n = jaxrs.example.CC1_proto.Short.newBuilder().setValue(7).build();
       jaxrs.example.CC1_proto.Short response;
