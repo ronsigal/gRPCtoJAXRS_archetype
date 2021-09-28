@@ -17,10 +17,19 @@ public class ${root-class}_Server {
 
    @Path("start")
    @GET
-   public void startGRPC() throws Exception {
-      final ${root-class}_Server server = new ${root-class}_Server();
-      server.start();
-      server.blockUntilShutdown();
+   public String startGRPC() throws Exception {
+      final CC1_Server server = new CC1_Server();
+      new Thread() {
+         public void run() {
+            try {
+               server.start();
+               server.blockUntilShutdown();
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+         }
+      }.start();
+      return "Starting gRPC server on port 8082";
    }
 
    @Path("stop")
@@ -82,6 +91,5 @@ public class ${root-class}_Server {
       server.start();
       server.blockUntilShutdown();
    }
-
 }
 
