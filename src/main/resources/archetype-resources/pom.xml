@@ -225,6 +225,7 @@
                         <argument>${package}</argument>
                         <argument>${package}</argument>
                         <argument>${root.class}</argument>
+                        <argument></argument>
                      </arguments>
                      <systemProperties>
                         <systemProperty>
