@@ -55,6 +55,7 @@ public class CC1_Client
     */
    @Test
    public void testM1() throws Exception {
+      System.out.println("running testM1()");
    /*
       org_jboss_resteasy_example___CC3 cc3 = org_jboss_resteasy_example___CC3.newBuilder().setS("thag").build();
       org_jboss_resteasy_example___CC2 cc2 = org_jboss_resteasy_example___CC2.newBuilder().setJ(17).setCC3Super(cc3).build();
@@ -74,6 +75,7 @@ public class CC1_Client
 
    //@Test
    public void testShort() throws Exception {
+      System.out.println("running testShort()");
       ${package}.${root-class}_proto.Short n = ${package}.${root-class}_proto.Short.newBuilder().setValue(3).build();
       ${package}.${root-class}_proto.Short response;
       try {
@@ -90,6 +92,7 @@ public class CC1_Client
 
    //@Test
    public void testShortWrapper() throws Exception {
+      System.out.println("running testShortWrapper()");
       ${package}.${root-class}_proto.Short n = ${package}.${root-class}_proto.Short.newBuilder().setValue(7).build();
       ${package}.${root-class}_proto.Short response;
       try {
@@ -106,6 +109,7 @@ public class CC1_Client
 
    @Test
    public void testInt() throws Exception {
+      System.out.println("running testInt()");
       ${package}.${root-class}_proto.Integer n = ${package}.${root-class}_proto.Integer.newBuilder().setValue(3).build();
       ${package}.${root-class}_proto.Integer response;
       try {
@@ -122,6 +126,7 @@ public class CC1_Client
    
    @Test
    public void testInteger() throws Exception {
+      System.out.println("running testInteger()");
       ${package}.${root-class}_proto.Integer n = ${package}.${root-class}_proto.Integer.newBuilder().setValue(5).build();
       ${package}.${root-class}_proto.Integer response;
       try {
@@ -139,6 +144,7 @@ public class CC1_Client
    
    @Test
    public void testLong() throws Exception {
+      System.out.println("running testLong()");
       ${package}.${root-class}_proto.Long n = ${package}.${root-class}_proto.Long.newBuilder().setValue(3).build();
       ${package}.${root-class}_proto.Long response;
       try {
@@ -155,6 +161,7 @@ public class CC1_Client
    
    @Test
    public void testLongWrapper() throws Exception {
+      System.out.println("running testLongWrapper()");
       ${package}.${root-class}_proto.Long n = ${package}.${root-class}_proto.Long.newBuilder().setValue(5).build();
       ${package}.${root-class}_proto.Long response;
       try {
@@ -162,6 +169,25 @@ public class CC1_Client
          System.out.println("response: " + response.getValue());
          ${package}.${root-class}_proto.Long expected = ${package}.${root-class}_proto.Long.newBuilder().setValue(6).build();
          Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+   
+   @Test
+   public void testResponse() throws Exception {
+      System.out.println("running testResponse()");
+      ${package}.${root-class}_proto.org_jboss_resteasy_example___CC7 response;
+      try {
+         response = blockingStub.getResponse();
+         System.out.println("response: " + response);
+         System.out.println("response.m: " + response.getM());
+         System.out.println("response.cc3Super: " + response.getCC3Super().getS());
+                
+//         ${package}.${root-class}_proto.Long expected = ${package}.${root-class}_proto.Long.newBuilder().setValue(6).build();
+//         Assert.assertEquals(expected, response);
       } catch (StatusRuntimeException e) {
          e.printStackTrace();
          Assert.fail("fail");
