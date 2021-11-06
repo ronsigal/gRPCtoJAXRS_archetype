@@ -15,6 +15,7 @@
       <resteasy.version>default</resteasy.version>
       <root.class>default</root.class>
       <servlet.name>default</servlet.name>
+      <extra.classes></extra.classes>
    </properties>
   
    <dependencies>
@@ -225,7 +226,7 @@
                         <argument>${package}</argument>
                         <argument>${package}</argument>
                         <argument>${root.class}</argument>
-                        <argument></argument>
+                        <argument>${extra.classes}</argument>
                      </arguments>
                      <systemProperties>
                         <systemProperty>
