@@ -1,4 +1,4 @@
-package test.grpc;
+package grpc.server;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -7,17 +7,25 @@ import java.util.logging.Logger;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+
+//import io.grpc.classes.TestServerInterceptor;
 
 import ${package}.${root-class}ServiceGrpcImpl;
 
 @Path("grpcserver")
 public class ${root-class}_Server {
 
+   private static ServletContext context;
+
    @Path("start")
    @GET
-   public String startGRPC() throws Exception {
+   public String startGRPC(@Context HttpServletRequest request) throws Exception {
+      context = request.getServletContext();
       final CC1_Server server = new CC1_Server();
       new Thread() {
          public void run() {
@@ -37,6 +45,10 @@ public class ${root-class}_Server {
    public void stopGRPC() throws Exception {
       stop();
    }
+   
+   static public ServletContext getContext() {
+      return context;
+   }
 
    private static final Logger logger = Logger.getLogger(${root-class}_Server.class.getName());
 
@@ -50,6 +62,7 @@ public class ${root-class}_Server {
       int port = 8082;
       server = ServerBuilder.forPort(port)
             .addService(new ${root-class}ServiceGrpcImpl())
+//            .intercept(new TestServerInterceptor())
             .build()
             .start();
       logger.info("Server started, listening on " + port);
