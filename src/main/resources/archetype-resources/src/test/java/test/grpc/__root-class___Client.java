@@ -343,59 +343,59 @@ public class CC1_Client
    
    @Test
    public void testPathParams() throws Exception {
-	      System.out.println("running testPathParams()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/path/aa/param/bb").build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.pathParams(gem);
-	         System.out.println("response: " + response.getValue());
-	         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("xaaybbz").build();
-	         Assert.assertEquals(expected, response);
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testPathParams()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/path/aa/param/bb").build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.pathParams(gem);
+         System.out.println("response: " + response.getValue());
+         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("xaaybbz").build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
 
    @Test
    public void testQueryParams() throws Exception {
-	      System.out.println("running testQueryParams()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/query?q1=a&q2=b").build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.queryParams(gem);
-	         System.out.println("response: " + response.getValue());
-	         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("xaybz").build();
-	         Assert.assertEquals(expected, response);
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testQueryParams()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/query?q1=a&q2=b").build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.queryParams(gem);
+         System.out.println("response: " + response.getValue());
+         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("xaybz").build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
 
    @Test
    public void testMatrixParams() throws Exception {
-	      System.out.println("running testMatrixParams()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/matrix;m1=a;m2=b/more;m3=c").build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.matrixParams(gem);
-	         System.out.println("response: " + response.getValue());
-	         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("waxbycz").build();
-	         Assert.assertEquals(expected, response);
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testMatrixParams()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/matrix;m1=a;m2=b/more;m3=c").build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.matrixParams(gem);
+         System.out.println("response: " + response.getValue());
+         ${package}.${root-class}_proto.gString expected = ${package}.${root-class}_proto.gString.newBuilder().setValue("waxbycz").build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
 /*
 message Cookie {
@@ -408,110 +408,110 @@ message Cookie {
 */
    @Test
    public void testCookieParams() throws Exception {
-	      System.out.println("running testCookieParams()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      messageBuilder.setURL("${URL}" + "/root/p/cookieParams");
-	      jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder1 = jaxrs.example.CC1_proto.Cookie.newBuilder();
-	      jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder2 = jaxrs.example.CC1_proto.Cookie.newBuilder();
-	      jaxrs.example.CC1_proto.Cookie cookie1 = cookieBuilder1.setName("c1").setValue("v1").setVersion(7).setPath("a/b").setDomain("d1").build();
-	      jaxrs.example.CC1_proto.Cookie cookie2 = cookieBuilder2.setName("c2").setValue("v2").build();
-	      messageBuilder.addCookies(cookie1).addCookies(cookie2);
-	      GeneralEntityMessage gem = messageBuilder.build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.cookieParams(gem);
-	         System.out.println("response: " + response.getValue());
-	         Assert.assertEquals("xc1=v1;d1,a/b,7yc2=v2;,,0z", response.getValue());
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testCookieParams()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("${URL}" + "/root/p/cookieParams");
+      jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder1 = jaxrs.example.CC1_proto.Cookie.newBuilder();
+      jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder2 = jaxrs.example.CC1_proto.Cookie.newBuilder();
+      jaxrs.example.CC1_proto.Cookie cookie1 = cookieBuilder1.setName("c1").setValue("v1").setVersion(7).setPath("a/b").setDomain("d1").build();
+      jaxrs.example.CC1_proto.Cookie cookie2 = cookieBuilder2.setName("c2").setValue("v2").build();
+      messageBuilder.addCookies(cookie1).addCookies(cookie2);
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.cookieParams(gem);
+         System.out.println("response: " + response.getValue());
+         Assert.assertEquals("xc1=v1;d1,a/b,7yc2=v2;,,0z", response.getValue());
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
 
    @Test
    public void testHeaderParams() throws Exception {
-	      System.out.println("running testHeaderParams()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      messageBuilder.setURL("${URL}" + "/root/p/headerParams");
-	      jaxrs.example.CC1_proto.Header.Builder headerBuilder1 = jaxrs.example.CC1_proto.Header.newBuilder();
-	      jaxrs.example.CC1_proto.Header header1 = headerBuilder1.addValues("v1.1").addValues("v1.2").build();
-	      messageBuilder.putHeaders("h1", header1);
-	      jaxrs.example.CC1_proto.Header.Builder headerBuilder2 = jaxrs.example.CC1_proto.Header.newBuilder();
-	      jaxrs.example.CC1_proto.Header header2 = headerBuilder2.addValues("v2").build();
-	      messageBuilder.putHeaders("h2", header2);
-	      GeneralEntityMessage gem = messageBuilder.build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.headerParams(gem);
-	         System.out.println("response: " + response.getValue());
-	         Assert.assertEquals("xv1.1yv2z", response.getValue());
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testHeaderParams()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("${URL}" + "/root/p/headerParams");
+      jaxrs.example.CC1_proto.Header.Builder headerBuilder1 = jaxrs.example.CC1_proto.Header.newBuilder();
+      jaxrs.example.CC1_proto.Header header1 = headerBuilder1.addValues("v1.1").addValues("v1.2").build();
+      messageBuilder.putHeaders("h1", header1);
+      jaxrs.example.CC1_proto.Header.Builder headerBuilder2 = jaxrs.example.CC1_proto.Header.newBuilder();
+      jaxrs.example.CC1_proto.Header header2 = headerBuilder2.addValues("v2").build();
+      messageBuilder.putHeaders("h2", header2);
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.headerParams(gem);
+         System.out.println("response: " + response.getValue());
+         Assert.assertEquals("xv1.1yv2z", response.getValue());
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
    
    @Test
    public void testSuspend() throws Exception {
-	      System.out.println("running testSuspend()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      messageBuilder.setURL("${URL}" + "/root/p/suspend");
-	      GeneralEntityMessage gem = messageBuilder.build();
-	      System.out.println("gem: " + gem);
-	      try {
-	         com.google.protobuf.Any response = blockingStub.suspend(gem);
-	         jaxrs.example.CC1_proto.gString gS = response.unpack(jaxrs.example.CC1_proto.gString.class);
-	         String s = gS.getValue();
-	         System.out.println("response: " + response);
+      System.out.println("running testSuspend()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("${URL}" + "/root/p/suspend");
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      try {
+         com.google.protobuf.Any response = blockingStub.suspend(gem);
+         jaxrs.example.CC1_proto.gString gS = response.unpack(jaxrs.example.CC1_proto.gString.class);
+         String s = gS.getValue();
+         System.out.println("response: " + response);
              System.out.println("unpacked response: " + gS);
              System.out.println("s: " + s);
-	         Assert.assertEquals("suspend", s);
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+         Assert.assertEquals("suspend", s);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
    
-   //@Test
+   @Test
    public void testCompletionStage() throws Exception {
-	      System.out.println("running testCompletionStage()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      messageBuilder.setURL("${URL}" + "/root/p/async/cs");
-	      GeneralEntityMessage gem = messageBuilder.build();
-	      System.out.println("gem: " + gem);
-	      try {
-	         ${package}.${root-class}_proto.gString response = blockingStub.getResponseCompletionStage(gem);
-	         System.out.println("response: " + response.getValue());
-	         Assert.assertEquals("cs", response.getValue());
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testCompletionStage()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("${URL}" + "/root/p/async/cs");
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      try {
+         ${package}.${root-class}_proto.gString response = blockingStub.getResponseCompletionStage(gem);
+         System.out.println("response: " + response.getValue());
+         Assert.assertEquals("cs", response.getValue());
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
    
    @Test
    public void testServletContext() throws Exception {
-	      System.out.println("running testServletContext()");
-	      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-	      messageBuilder.setURL("${URL}" + "/root/p/context");
-	      GeneralEntityMessage gem = messageBuilder.build();
-	      System.out.println("gem: " + gem);
-	      ${package}.${root-class}_proto.gString response;
-	      try {
-	         response = blockingStub.context(gem);
-	         System.out.println("response: " + response.getValue());
-	         Assert.assertEquals("/jaxrs.example.grpc-0.0.1-SNAPSHOT", response.getValue());
-	      } catch (StatusRuntimeException e) {
-	         e.printStackTrace();
-	         Assert.fail("fail");
-	         return;
-	      }
+      System.out.println("running testServletContext()");
+      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("${URL}" + "/root/p/context");
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.context(gem);
+         System.out.println("response: " + response.getValue());
+         Assert.assertEquals("/jaxrs.example.grpc-0.0.1-SNAPSHOT", response.getValue());
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
    }
    
 //   @Test
