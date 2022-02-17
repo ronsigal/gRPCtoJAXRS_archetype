@@ -16,6 +16,7 @@
       <root.class>default</root.class>
       <servlet.name>default</servlet.name>
       <extra.classes></extra.classes>
+      <jaxrs.project.modulename></jaxrs.project.modulename>
       <context></context>
    </properties>
   
@@ -71,7 +72,7 @@
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
          <version>4.12</version>
-         <scope>test</scope>
+         <scope>compile</scope> <!-- for CC1_Server -->
       </dependency>
       <dependency>
          <groupId>org.codehaus.mojo</groupId>
@@ -141,6 +142,11 @@
                      <targetPath>WEB-INF/classes</targetPath>
                   </resource>
                </webResources>
+               <archive>
+                  <manifestEntries>
+                     <Dependencies>deployment.${jaxrs.project.modulename}.war</Dependencies>
+                  </manifestEntries>
+               </archive>
             </configuration>
          </plugin>
          
@@ -196,6 +202,7 @@
                      <sources>
                         <source>${project.basedir}/target/generated-sources/protobuf/java/</source>
                         <source>${project.basedir}/target/generated-sources/protobuf/grpc-java/</source>
+                        <source>${project.basedir}/src/test/java</source>
                      </sources>
                   </configuration>
                </execution>
@@ -320,6 +327,26 @@
                      <arguments>
                         <argument>${root.class}</argument>
                         <argument>jaxrs.example.${root.class}</argument>
+                     </arguments>
+                     <systemProperties>
+                        <systemProperty>
+                           <key>exec.cleanupDaemonThreads</key>
+                           <value>false</value>
+                        </systemProperty>
+                     </systemProperties>
+                  </configuration>
+               </execution>
+               <execution>
+                  <id>delete-jaxrs-classes</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                     <goal>java</goal>
+                  </goals>
+                  <configuration>
+                     <mainClass>org.jboss.resteasy.plugins.protobuf.util.DeleteJaxrsClasses</mainClass>
+                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                     <arguments>
+                        <argument>${project.basedir}</argument>
                      </arguments>
                      <systemProperties>
                         <systemProperty>

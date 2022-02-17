@@ -1,4 +1,4 @@
-package grpc.server;
+package test.grpc;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
