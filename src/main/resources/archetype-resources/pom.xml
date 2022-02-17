@@ -136,6 +136,16 @@
             <artifactId>maven-war-plugin</artifactId>
             <version>3.2.3</version>
             <configuration>
+               <overlays>
+                  <overlay>
+                     <groupId>${groupId}</groupId>
+                     <artifactId>${artifactId}</artifactId>>
+                     <excludes>
+                        <exclude>**/*</exclude>
+                     </excludes>
+                  </overlay>
+               </overlays>
+               <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
                <webResources>
                   <resource>
                      <directory>${basedir}/target/test-classes</directory>
