@@ -11,14 +11,14 @@
    <servlet>
       <servlet-name>Resteasy</servlet-name>
       <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServlet30Dispatcher</servlet-class>
-      <!--init-param>
+      <init-param>
          <param-name>javax.ws.rs.Application</param-name>
-         <param-value>org.jboss.resteasy.test.grpc.TestApp</param-value>
-      </init-param-->
+         <param-value>test.grpc.${root-class}_Application</param-value>
+      </init-param>
    </servlet>
 
    <servlet-mapping>
-      <servlet-name>Resteasy</servlet-name>
-      <url-pattern>/*</url-pattern>
+      <servlet-name>GRPC-JAXRS</servlet-name>
+      <url-pattern>/grpc-jaxrs/*</url-pattern>
    </servlet-mapping>
 </web-app>

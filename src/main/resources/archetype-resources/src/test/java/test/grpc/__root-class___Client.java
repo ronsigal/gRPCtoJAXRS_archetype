@@ -84,7 +84,7 @@ public class CC1_Client
       System.out.println("running testShort()");
       ${package}.${root-class}_proto.gShort n = ${package}.${root-class}_proto.gShort.newBuilder().setValue(3).build();
       ${package}.${root-class}_proto.GeneralEntityMessage.Builder builder = ${package}.${root-class}_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/short").setGShortField(n).build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/short").setGShortField(n).build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gShort response;
       try {
@@ -120,7 +120,7 @@ public class CC1_Client
    public void testInt() throws Exception {
       System.out.println("running testInt()");
       ${package}.${root-class}_proto.gInteger n = ${package}.${root-class}_proto.gInteger.newBuilder().setValue(3).build();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/short").setGIntegerField(n).build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/short").setGIntegerField(n).build();
       System.out.println("gem: " + gem);
       
       ${package}.${root-class}_proto.gInteger response;
@@ -307,7 +307,7 @@ public class CC1_Client
       System.out.println("running testInt()");
       ${package}.${root-class}_proto.gInteger n = ${package}.${root-class}_proto.gInteger.newBuilder().setValue(3).build();
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/int").setGIntegerField(n).build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/int").setGIntegerField(n).build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gInteger response;
       try {
@@ -326,7 +326,7 @@ public class CC1_Client
    public void testProduces() throws Exception {
       System.out.println("running testProduces()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/produces").build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/produces").build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gString response;
       try {
@@ -345,7 +345,7 @@ public class CC1_Client
    public void testPathParams() throws Exception {
       System.out.println("running testPathParams()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/path/aa/param/bb").build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/path/aa/param/bb").build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gString response;
       try {
@@ -364,7 +364,7 @@ public class CC1_Client
    public void testQueryParams() throws Exception {
       System.out.println("running testQueryParams()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/query?q1=a&q2=b").build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/query?q1=a&q2=b").build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gString response;
       try {
@@ -383,7 +383,7 @@ public class CC1_Client
    public void testMatrixParams() throws Exception {
       System.out.println("running testMatrixParams()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder builder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      GeneralEntityMessage gem = builder.setURL("${URL}" + "/root/p/matrix;m1=a;m2=b/more;m3=c").build();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/matrix;m1=a;m2=b/more;m3=c").build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gString response;
       try {
@@ -410,7 +410,7 @@ message Cookie {
    public void testCookieParams() throws Exception {
       System.out.println("running testCookieParams()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      messageBuilder.setURL("${URL}" + "/root/p/cookieParams");
+      messageBuilder.setURL("${URL}" + "/p/cookieParams");
       jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder1 = jaxrs.example.CC1_proto.Cookie.newBuilder();
       jaxrs.example.CC1_proto.Cookie.Builder cookieBuilder2 = jaxrs.example.CC1_proto.Cookie.newBuilder();
       jaxrs.example.CC1_proto.Cookie cookie1 = cookieBuilder1.setName("c1").setValue("v1").setVersion(7).setPath("a/b").setDomain("d1").build();
@@ -434,7 +434,7 @@ message Cookie {
    public void testHeaderParams() throws Exception {
       System.out.println("running testHeaderParams()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      messageBuilder.setURL("${URL}" + "/root/p/headerParams");
+      messageBuilder.setURL("${URL}" + "/p/headerParams");
       jaxrs.example.CC1_proto.Header.Builder headerBuilder1 = jaxrs.example.CC1_proto.Header.newBuilder();
       jaxrs.example.CC1_proto.Header header1 = headerBuilder1.addValues("v1.1").addValues("v1.2").build();
       messageBuilder.putHeaders("h1", header1);
@@ -459,7 +459,7 @@ message Cookie {
    public void testSuspend() throws Exception {
       System.out.println("running testSuspend()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      messageBuilder.setURL("${URL}" + "/root/p/suspend");
+      messageBuilder.setURL("${URL}" + "/p/suspend");
       GeneralEntityMessage gem = messageBuilder.build();
       System.out.println("gem: " + gem);
       try {
@@ -481,7 +481,7 @@ message Cookie {
    public void testCompletionStage() throws Exception {
       System.out.println("running testCompletionStage()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      messageBuilder.setURL("${URL}" + "/root/p/async/cs");
+      messageBuilder.setURL("${URL}" + "/p/async/cs");
       GeneralEntityMessage gem = messageBuilder.build();
       System.out.println("gem: " + gem);
       try {
@@ -499,7 +499,7 @@ message Cookie {
    public void testServletContext() throws Exception {
       System.out.println("running testServletContext()");
       jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-      messageBuilder.setURL("${URL}" + "/root/p/context");
+      messageBuilder.setURL("${URL}" + "/p/context");
       GeneralEntityMessage gem = messageBuilder.build();
       System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gString response;
@@ -518,7 +518,7 @@ message Cookie {
 //   public void testSSE() throws Exception {
 //      System.out.println("running testSSE()");
 //      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-//      messageBuilder.setURL("${URL}" + "/root/p/sse");
+//      messageBuilder.setURL("${URL}" + "/p/sse");
 //      GeneralEntityMessage gem = messageBuilder.build();
 //      System.out.println("gem: " + gem);
 //      
