@@ -1,6 +1,6 @@
 # gRPCtoJAXRS_archetype
 
-The [RESTEasy protobuf provider](https://github.com/ronsigal/Resteasy/tree/protobuf3/providers/resteasy-protobuf-provider)
+The [RESTEasy grpc provider](https://github.com/ronsigal/Resteasy/tree/protobuf3/providers/resteasy-protobuf-provider)
 supports exposing JAX-RS services to gRPC clients. See the README.md file there for a 
 discussion of the various mechanisms and classes involved.
 
@@ -49,7 +49,7 @@ The result is a new gRPCtoJAXRS maven project named by its artifactId. Its initi
  
 Building the gRPCtoJAXRS project downloads the src/main/java contents of the target 
 project, and builds all of the generated classes described in 
-[RESTEasy protobuf provider](https://github.com/ronsigal/Resteasy/tree/protobuf3/providers/resteasy-protobuf-provider).
+[RESTEasy grpc provider](https://github.com/ronsigal/Resteasy/tree/protobuf3/providers/resteasy-protobuf-provider).
 
 The following parameters are needed:
 

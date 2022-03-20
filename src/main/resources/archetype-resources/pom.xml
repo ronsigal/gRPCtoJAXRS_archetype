@@ -45,7 +45,7 @@
       </dependency>
       <dependency>
          <groupId>org.jboss.resteasy</groupId>
-         <artifactId>resteasy-protobuf-provider</artifactId>
+         <artifactId>resteasy-grpc-provider</artifactId>
          <version>${resteasy.version}</version>
       </dependency>
       <dependency>
@@ -244,7 +244,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.protobuf.JavaToProtobufGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.JavaToProtobufGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}</argument>
@@ -268,7 +268,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.grpc.JaxrsImplBaseExtender</mainClass>
+                     <mainClass>org.jboss.resteasy.plugins.grpc.JaxrsImplBaseExtender</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${root.class}</argument>
@@ -291,7 +291,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.protobuf.JavabufTranslatorGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.JavabufTranslatorGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}/target/generated-sources/protobuf/java</argument>
@@ -312,7 +312,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.protobuf.ReaderWriterGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.ReaderWriterGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${package}.${root.class}_proto</argument>
@@ -333,7 +333,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.protobuf.util.DeleteJaxrsClasses</mainClass>
+                     <mainClass>org.jboss.resteasy.plugins.grpc.util.DeleteJaxrsClasses</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}</argument>
