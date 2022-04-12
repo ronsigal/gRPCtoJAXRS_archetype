@@ -28,7 +28,8 @@ import javax.ws.rs.client.WebTarget;
 
 public class CC1_Client
 {
-   private static String target = "localhost:8082";
+//   private static String target = "localhost:9555";
+ private static String target = "localhost:8082";
    private static CC1ServiceBlockingStub blockingStub;
    
    private static ManagedChannel channel;

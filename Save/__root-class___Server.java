@@ -21,7 +21,6 @@ import ${package}.${root-class}ServiceGrpcImpl;
 public class ${root-class}_Server {
 
    private static ServletContext context;
-   private static int PORT = 8082;
 
    @Path("start")
    @GET
@@ -32,14 +31,13 @@ public class ${root-class}_Server {
          public void run() {
             try {
                server.start();
-               System.out.println("started gRPC server on port " + PORT);
                server.blockUntilShutdown();
             } catch (Exception e) {
                e.printStackTrace();
             }
          }
       }.start();
-      return "Starting gRPC server on port " + PORT;
+      return "Starting gRPC server on port 9555";
    }
    
    @Path("context")
@@ -69,12 +67,13 @@ public class ${root-class}_Server {
     */
    private void start() throws IOException {
       /* The port on which the server should run */
-      server = ServerBuilder.forPort(PORT)
+      int port = 8082;
+      server = ServerBuilder.forPort(port)
             .addService(new ${root-class}ServiceGrpcImpl())
 //            .intercept(new TestServerInterceptor())
             .build()
             .start();
-      logger.info("Server started, listening on " + PORT);
+      logger.info("Server started, listening on " + port);
       Runtime.getRuntime().addShutdownHook(new Thread() {
          @Override
          public void run() {
