@@ -80,7 +80,47 @@ public class CC1_Client
       */
    }
 
-   //@Test
+   @Test
+   public void testByte() throws Exception {
+      System.out.println("running testByte()");
+      ${package}.${root-class}_proto.gByte n = ${package}.${root-class}_proto.gByte.newBuilder().setValue(3).build();
+      ${package}.${root-class}_proto.GeneralEntityMessage.Builder builder = ${package}.${root-class}_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/short").setGByteField(n).build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gByte response;
+      try {
+         response = blockingStub.getByte(gem);
+         System.out.println("response: " + response.getValue());
+         ${package}.${root-class}_proto.gByte expected = ${package}.${root-class}_proto.gByte.newBuilder().setValue(4).build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+
+   @Test
+   public void testByteWrapper() throws Exception {
+      System.out.println("running testByteWrapper()");
+      ${package}.${root-class}_proto.gByte n = ${package}.${root-class}_proto.gByte.newBuilder().setValue(7).build();
+      ${package}.${root-class}_proto.GeneralEntityMessage.Builder builder = ${package}.${root-class}_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/Byte").setGByteField(n).build();
+      System.out.println("gem: " + gem);
+      ${package}.${root-class}_proto.gByte response;
+      try {
+         response = blockingStub.getByteWrapper(gem);
+         System.out.println("response: " + response.getValue());
+         ${package}.${root-class}_proto.gByte expected = ${package}.${root-class}_proto.gByte.newBuilder().setValue(8).build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+   
+   @Test
    public void testShort() throws Exception {
       System.out.println("running testShort()");
       ${package}.${root-class}_proto.gShort n = ${package}.${root-class}_proto.gShort.newBuilder().setValue(3).build();
@@ -99,14 +139,17 @@ public class CC1_Client
          return;
       }
    }
-/*
-   //@Test
+
+   @Test
    public void testShortWrapper() throws Exception {
       System.out.println("running testShortWrapper()");
       ${package}.${root-class}_proto.gShort n = ${package}.${root-class}_proto.gShort.newBuilder().setValue(7).build();
+      ${package}.${root-class}_proto.GeneralEntityMessage.Builder builder = ${package}.${root-class}_proto.GeneralEntityMessage.newBuilder();
+      GeneralEntityMessage gem = builder.setURL("${URL}" + "/p/Short").setGShortField(n).build();
+      System.out.println("gem: " + gem);
       ${package}.${root-class}_proto.gShort response;
       try {
-         response = blockingStub.getShortWrapper(n);
+         response = blockingStub.getShortWrapper(gem);
          System.out.println("response: " + response.getValue());
          ${package}.${root-class}_proto.gShort expected = ${package}.${root-class}_proto.gShort.newBuilder().setValue(8).build();
          Assert.assertEquals(expected, response);
@@ -116,7 +159,7 @@ public class CC1_Client
          return;
       }
    }
-
+/*
    @Test
    public void testInt() throws Exception {
       System.out.println("running testInt()");
