@@ -52,29 +52,6 @@ public class CC1_Client
       channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
    }
 
-   /**
-    * @tpTestDetails Test gRPC.
-    */
-   @Test
-   public void testM1() throws Exception {
-      System.out.println("running testM1()");
-      /*
-      org_jboss_resteasy_example___CC3 cc3 = org_jboss_resteasy_example___CC3.newBuilder().setS("thag").build();
-      org_jboss_resteasy_example___CC2 cc2 = org_jboss_resteasy_example___CC2.newBuilder().setJ(17).setCC3Super(cc3).build();
-      ${package}.${root-class}_proto.String response;
-      try {
-         response = blockingStub.m1(cc2);
-         System.out.println("response: " + response.getValue());
-         String expected = ${package}.${root-class}_proto.String.newBuilder().setValue("j: " + 17 + ", s: " + "thag").build().getValue();
-         Assert.assertEquals("x", response.getValue());
-      } catch (StatusRuntimeException e) {
-         e.printStackTrace();
-         Assert.fail("fail");
-         return;
-      }
-       */
-   }
-
    @Test
    public void testBoolean() throws Exception {
       System.out.println("running testBoolean()");

@@ -68,10 +68,8 @@ public class ${root-class}_Server {
     * Start gRPC server.
     */
    private void start() throws IOException {
-      /* The port on which the server should run */
       server = ServerBuilder.forPort(PORT)
             .addService(new ${root-class}ServiceGrpcImpl())
-//            .intercept(new TestServerInterceptor())
             .build()
             .start();
       logger.info("Server started, listening on " + PORT);
