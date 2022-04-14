@@ -16,11 +16,6 @@ import com.google.protobuf.Any;
 
 import ${package}.${root-class}ServiceGrpc;
 import ${package}.${root-class}ServiceGrpc.CC1ServiceBlockingStub;
-
-//import ${package}.${root-class}ServiceGrpc;
-//import ${package}.${root-class}ServiceGrpc.CC1ServiceBlockingStub;
-//import ${package}.${root-class}_proto.org_jboss_resteasy_example___CC2;
-//import ${package}.${root-class}_proto.org_jboss_resteasy_example___CC3;
 import ${package}.${root-class}_proto.GeneralEntityMessage;
 import ${package}.${root-class}_proto.GeneralReturnMessage;
 
@@ -31,7 +26,7 @@ public class CC1_Client
 //   private static String target = "localhost:9555";
  private static String target = "localhost:8082";
    private static CC1ServiceBlockingStub blockingStub;
-   
+
    private static ManagedChannel channel;
 
    @BeforeClass
@@ -159,7 +154,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testShort() throws Exception {
       System.out.println("running testShort()");
@@ -219,7 +214,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testInteger() throws Exception {
       System.out.println("running testInteger()");
@@ -259,7 +254,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testLongWrapper() throws Exception {
       System.out.println("running testLongWrapper()");
@@ -563,7 +558,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testSuspend() throws Exception {
       System.out.println("running testSuspend()");
@@ -585,7 +580,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testCompletionStage() throws Exception {
       System.out.println("running testCompletionStage()");
@@ -603,7 +598,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
    @Test
    public void testServletContext() throws Exception {
       System.out.println("running testServletContext()");
@@ -622,7 +617,7 @@ public class CC1_Client
          return;
       }
    }
-   
+
 //   @Test
 //   public void testSSE() throws Exception {
 //      System.out.println("running testSSE()");
