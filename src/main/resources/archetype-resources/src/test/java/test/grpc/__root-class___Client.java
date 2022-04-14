@@ -23,8 +23,8 @@ import javax.ws.rs.client.WebTarget;
 
 public class CC1_Client
 {
-//   private static String target = "localhost:9555";
- private static String target = "localhost:8082";
+   //   private static String target = "localhost:9555";
+   private static String target = "localhost:8082";
    private static CC1ServiceBlockingStub blockingStub;
 
    private static ManagedChannel channel;
@@ -33,9 +33,9 @@ public class CC1_Client
    public static void beforeClass() throws Exception
    {
       System.out.println("entered beforeClass()");
-//      // Create a communication channel to the server, known as a Channel. Channels are thread-safe
-//      // and reusable. It is common to create channels at the beginning of your application and reuse
-//      // them until the application shuts down.
+      //      // Create a communication channel to the server, known as a Channel. Channels are thread-safe
+      //      // and reusable. It is common to create channels at the beginning of your application and reuse
+      //      // them until the application shuts down.
       channel = ManagedChannelBuilder.forTarget(target)
             // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
             // needing certificates.
@@ -58,7 +58,7 @@ public class CC1_Client
    @Test
    public void testM1() throws Exception {
       System.out.println("running testM1()");
-   /*
+      /*
       org_jboss_resteasy_example___CC3 cc3 = org_jboss_resteasy_example___CC3.newBuilder().setS("thag").build();
       org_jboss_resteasy_example___CC2 cc2 = org_jboss_resteasy_example___CC2.newBuilder().setJ(17).setCC3Super(cc3).build();
       ${package}.${root-class}_proto.String response;
@@ -72,7 +72,7 @@ public class CC1_Client
          Assert.fail("fail");
          return;
       }
-      */
+       */
    }
 
    @Test
@@ -571,8 +571,8 @@ public class CC1_Client
          jaxrs.example.CC1_proto.gString gS = response.unpack(jaxrs.example.CC1_proto.gString.class);
          String s = gS.getValue();
          System.out.println("response: " + response);
-             System.out.println("unpacked response: " + gS);
-             System.out.println("s: " + s);
+         System.out.println("unpacked response: " + gS);
+         System.out.println("s: " + s);
          Assert.assertEquals("suspend", s);
       } catch (StatusRuntimeException e) {
          e.printStackTrace();
@@ -618,25 +618,25 @@ public class CC1_Client
       }
    }
 
-//   @Test
-//   public void testSSE() throws Exception {
-//      System.out.println("running testSSE()");
-//      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
-//      messageBuilder.setURL("${URL}" + "/p/sse");
-//      GeneralEntityMessage gem = messageBuilder.build();
-//      System.out.println("gem: " + gem);
-//      
-//      java.util.Iterator<jaxrs.example.CC1_proto.org_jboss_resteasy_plugins_protobuf_sse___SseEvent> events;
-//      try {
-//         events = blockingStub.sse(gem);
-//         System.out.println("events: " + events);
-//      } catch (StatusRuntimeException e) {
-//         e.printStackTrace();
-//         Assert.fail("fail");
-//         return;
-//      }
-//      while (events.hasNext()) {
-//         
-//      }
-//   }
+   //   @Test
+   //   public void testSSE() throws Exception {
+   //      System.out.println("running testSSE()");
+   //      jaxrs.example.CC1_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.CC1_proto.GeneralEntityMessage.newBuilder();
+   //      messageBuilder.setURL("${URL}" + "/p/sse");
+   //      GeneralEntityMessage gem = messageBuilder.build();
+   //      System.out.println("gem: " + gem);
+   //      
+   //      java.util.Iterator<jaxrs.example.CC1_proto.org_jboss_resteasy_plugins_protobuf_sse___SseEvent> events;
+   //      try {
+   //         events = blockingStub.sse(gem);
+   //         System.out.println("events: " + events);
+   //      } catch (StatusRuntimeException e) {
+   //         e.printStackTrace();
+   //         Assert.fail("fail");
+   //         return;
+   //      }
+   //      while (events.hasNext()) {
+   //         
+   //      }
+   //   }
 }

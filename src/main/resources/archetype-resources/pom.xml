@@ -18,6 +18,7 @@
       <extra.classes></extra.classes>
       <jaxrs.project.modulename></jaxrs.project.modulename>
       <context></context>
+      <inWildFly>true</inWildFly>
    </properties>
   
    <dependencies>
@@ -328,6 +329,7 @@
                         <argument>${root.class}</argument>
                         <argument>${servlet.name}</argument>
                         <argument>/${artifactId}-${version}</argument>
+                        <argument>${inWildFly}</argument>
                      </arguments>
                      <systemProperties>
                         <systemProperty>
