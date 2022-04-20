@@ -57,7 +57,7 @@ public class CC1_Client
    @Test
    public void testBoolean() throws Exception {
       System.out.println("running testBoolean()");
-      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.Builder.newBuilder().setURL("${URL}/p/boolean").build();
+      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.newBuilder().setURL("${URL}/p/boolean").build();
       ${package}.${root-class}_proto.gBoolean n = ${package}.${root-class}_proto.gBoolean.newBuilder().setValue(false).build();
       ${package}.${root-class}_proto.gBoolean_Extension extension = ${package}.${root-class}_proto.gBoolean_Extension.newBuilder().setMessageExtension(messageExtension).setValue(n).build();
 //      ${package}.${root-class}_proto.GeneralEntityMessage.Builder builder = ${package}.${root-class}_proto.GeneralEntityMessage.newBuilder();
@@ -79,7 +79,7 @@ public class CC1_Client
    @Test
    public void testBooleanWrapper() throws Exception {
       System.out.println("running testBooleanWrapper()");
-      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.Builder.newBuilder().setURL("${URL}/p/Boolean").build();
+      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.newBuilder().setURL("${URL}/p/Boolean").build();
       ${package}.${root-class}_proto.gBoolean n = ${package}.${root-class}_proto.gBoolean.newBuilder().setValue(false).build();
       ${package}.${root-class}_proto.gBoolean_Extension extension = ${package}.${root-class}_proto.gBoolean_Extension.newBuilder().setMessageExtension(messageExtension).setValue(n).build();
       System.out.println("extension: " + extension);
@@ -99,7 +99,7 @@ public class CC1_Client
    @Test
    public void testByte() throws Exception {
       System.out.println("running testByte()");
-      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.Builder.newBuilder().setURL("${URL}/p/byte").build();
+      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.newBuilder().setURL("${URL}/p/byte").build();
       ${package}.${root-class}_proto.gByte n = ${package}.${root-class}_proto.gByte.newBuilder().setValue(3).build();
       ${package}.${root-class}_proto.gByte_Extension extension = ${package}.${root-class}_proto.gByte_Extension.newBuilder().setMessageExtension(messageExtension).setValue(n).build();
       System.out.println("extension: " + extension);
@@ -119,7 +119,7 @@ public class CC1_Client
    @Test
    public void testByteWrapper() throws Exception {
       System.out.println("running testByteWrapper()");
-      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.Builder.newBuilder().setURL("${URL}/[Byte").build();
+      ${package}.${root-class}_proto.MessageExtension messageExtension = jaxrs.example.CC1_proto.MessageExtension.newBuilder().setURL("${URL}/[Byte").build();
       ${package}.${root-class}_proto.gByte n = ${package}.${root-class}_proto.gByte.newBuilder().setValue(7).build();
       ${package}.${root-class}_proto.gByte_Extension extension = ${package}.${root-class}_proto.gByte_Extension.newBuilder().setMessageExtension(messageExtension).setValue(n).build();
       System.out.println("extension: " + extension);
