@@ -11,6 +11,11 @@ import org.junit.runner.RunWith;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import jaxrs.example.CC1_proto.GeneralEntityMessage;
+import jaxrs.example.CC1_proto.org_jboss_resteasy_example___CC2;
+import jaxrs.example.CC1_proto.org_jboss_resteasy_example___CC3;
+import jaxrs.example.CC1_proto.org_jboss_resteasy_example___CC4;
+import jaxrs.example.CC1_proto.org_jboss_resteasy_example___CC5;
 
 import com.google.protobuf.Any;
 
@@ -616,4 +621,54 @@ public class CC1_Client
    //         
    //      }
    //   }
+
+   @Test
+   public void testReferenceField() throws Exception {
+      System.out.println("running testReferenceField()");
+      org_jboss_resteasy_example___CC5 cc5 = org_jboss_resteasy_example___CC5.newBuilder().setK(11).build();
+      org_jboss_resteasy_example___CC4 cc4 = org_jboss_resteasy_example___CC4.newBuilder().setS("grog").setCc5(cc5).build();
+//    org_jboss_resteasy_example___CC4 cc4 = org_jboss_resteasy_example___CC4.newBuilder().setS(11).setCc5(cc5).build();
+      
+      GeneralEntityMessage.Builder messageBuilder = GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("http://localhost:8080/p/reference").setOrgJbossResteasyExampleCC4Field(cc4);
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      org_jboss_resteasy_example___CC4 response;
+      try {
+         response = blockingStub.referenceField(gem);
+         System.out.println("response: " + response.toString());
+         cc5 = org_jboss_resteasy_example___CC5.newBuilder().setK(12).build();
+         cc4 = org_jboss_resteasy_example___CC4.newBuilder().setS("xgrogy").setCc5(cc5).build();
+//         cc4 = org_jboss_resteasy_example___CC4.newBuilder().setS(12).setCc5(cc5).build();
+
+         Assert.assertTrue(cc4.equals(response));
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+
+   @Test
+   public void testInheritance() throws Exception {
+      System.out.println("running testInheritance()");
+      org_jboss_resteasy_example___CC3 cc3 = org_jboss_resteasy_example___CC3.newBuilder().setS("thag").build();
+      org_jboss_resteasy_example___CC2 cc2 = org_jboss_resteasy_example___CC2.newBuilder().setJ(17).setCC3Super(cc3).build();
+      GeneralEntityMessage.Builder messageBuilder = GeneralEntityMessage.newBuilder();
+      messageBuilder.setURL("http://localhost:8080/p/inheritance").setOrgJbossResteasyExampleCC2Field(cc2);
+      GeneralEntityMessage gem = messageBuilder.build();
+      System.out.println("gem: " + gem);
+      org_jboss_resteasy_example___CC2 response;
+      try {
+         response = blockingStub.inheritance(gem);
+         System.out.println("response: " + response);
+         cc3 = org_jboss_resteasy_example___CC3.newBuilder().setS("xthagy").build();
+         cc2 = org_jboss_resteasy_example___CC2.newBuilder().setJ(18).setCC3Super(cc3).build();
+         cc2.equals(response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
 }

@@ -41,7 +41,14 @@ public class ${root-class}_Server {
       }.start();
       return "Starting gRPC server on port " + PORT;
    }
-   
+
+   @Path("ready")
+   @GET
+   public String ready() {
+	   System.out.println("gRPC server ready");
+	   return "ready";
+   }
+
    @Path("context")
    @GET
    public String startContext(@Context HttpServletRequest request) throws Exception {
