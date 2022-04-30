@@ -29,15 +29,15 @@
          <type>war</type>
       </dependency>
       <dependency>
-         <groupId>org.jboss.spec.javax.ws.rs</groupId>
-         <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
-         <version>2.0.1.Final</version>
+          <groupId>jakarta.ws.rs</groupId>
+          <artifactId>jakarta.ws.rs-api</artifactId>
+          <version>3.1.0</version>
+          <!--scope>provided</scope-->
       </dependency>
       <dependency>
-          <groupId>org.jboss.spec.javax.servlet</groupId>
-          <artifactId>jboss-servlet-api_4.0_spec</artifactId>
-          <version>2.0.0.Final</version>
-          <scope>provided</scope>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>5.0.0</version>
       </dependency>
       <dependency>
          <groupId>org.jboss.resteasy</groupId>
@@ -46,7 +46,7 @@
       </dependency>
       <dependency>
          <groupId>org.jboss.resteasy</groupId>
-         <artifactId>resteasy-grpc-provider</artifactId>
+         <artifactId>grpc-bridge</artifactId>
          <version>${resteasy.version}</version>
       </dependency>
       <dependency>
@@ -62,12 +62,12 @@
       <dependency>
          <groupId>jakarta.inject</groupId>
          <artifactId>jakarta.inject-api</artifactId>
-         <version>1.0</version>
+         <version>2.0.0.RC1</version>
       </dependency>
       <dependency>
          <groupId>jakarta.enterprise</groupId>
          <artifactId>jakarta.enterprise.cdi-api</artifactId>
-         <version>2.0.2</version>
+         <version>4.0.0-RC5</version>
       </dependency>
       <dependency>
          <groupId>junit</groupId>
@@ -112,20 +112,36 @@
 	     <artifactId>guava</artifactId>
 	     <version>30.1-android</version>
       </dependency>
-      <dependency>
-         <groupId>org.wildfly</groupId>
-         <artifactId>wildfly-weld</artifactId>
-         <version>26.0.0.Final</version>
+     <dependency>
+         <groupId>org.jboss.weld</groupId>
+         <artifactId>weld-spi</artifactId>
+         <version>5.0.CR2</version>
       </dependency>
       <dependency>
          <groupId>org.jboss.weld</groupId>
          <artifactId>weld-core-impl</artifactId>
-         <version>3.1.3.Final</version>
+         <version>5.0.0.CR2</version>
       </dependency>
       <dependency>
          <groupId>org.jboss.weld.module</groupId>
          <artifactId>weld-web</artifactId>
-         <version>3.1.3.Final</version>
+         <version>5.0.0.CR2</version>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.weld</groupId>
+         <artifactId>weld-api</artifactId>
+         <version>5.0.CR2</version>
+         <exclusions>
+            <exclusion>
+               <groupId>javax.enterprise</groupId>
+               <artifactId>cdi-api</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <dependency>
+         <groupId>org.wildfly</groupId>
+         <artifactId>wildfly-weld-jakarta</artifactId>
+         <version>26.1.0.Final</version>
       </dependency>
       <dependency>
          <groupId>org.wildfly.extras.grpc</groupId>
@@ -134,6 +150,7 @@
          <scope>provided</scope>
       </dependency>
    </dependencies>
+
    <build>
       <extensions>
          <extension>
@@ -157,18 +174,13 @@
                      </excludes>
                   </overlay>
                </overlays>
-               <!-- packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
                <webResources>
                   <resource>
                      <directory>${basedir}/target/test-classes</directory>
                      <targetPath>WEB-INF/classes</targetPath>
                   </resource>
                </webResources>
-               <!--archive>
-                  <manifestEntries>
-                     <Dependencies>deployment.${jaxrs.project.modulename}.war</Dependencies>
-                  </manifestEntries>
-               </archive-->
+               <failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
          </plugin>
          
@@ -256,7 +268,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.JavaToProtobufGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.grpc.protobuf.JavaToProtobufGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}</argument>
@@ -273,7 +285,6 @@
                      </systemProperties>
                   </configuration>
                </execution>
-               <!--  <argument>/${artifactId}.grpc-${version}</argument> -->
                <execution>
                   <id>genprotobuf</id>
                   <phase>process-classes</phase>
@@ -281,7 +292,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.JavabufTranslatorGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.grpc.protobuf.JavabufTranslatorGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${project.basedir}/target/generated-sources/protobuf/java</argument>
@@ -302,7 +313,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.grpc.protobuf.ReaderWriterGenerator</mainClass>
+                     <mainClass>org.jboss.resteasy.grpc.protobuf.ReaderWriterGenerator</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${package}.${root.class}_proto</argument>
@@ -323,7 +334,7 @@
                      <goal>java</goal>
                   </goals>
                   <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.grpc.JaxrsImplBaseExtender</mainClass>
+                     <mainClass>org.jboss.resteasy.grpc.JaxrsImplBaseExtender</mainClass>
                      <cleanupDaemonThreads>false</cleanupDaemonThreads>
                      <arguments>
                         <argument>${root.class}</argument>
@@ -339,26 +350,6 @@
                      </systemProperties>
                   </configuration>
                </execution>
-               <!--execution>
-                  <id>delete-jaxrs-classes</id>
-                  <phase>prepare-package</phase>
-                  <goals>
-                     <goal>java</goal>
-                  </goals>
-                  <configuration>
-                     <mainClass>org.jboss.resteasy.plugins.grpc.util.DeleteJaxrsClasses</mainClass>
-                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                     <arguments>
-                        <argument>${project.basedir}</argument>
-                     </arguments>
-                     <systemProperties>
-                        <systemProperty>
-                           <key>exec.cleanupDaemonThreads</key>
-                           <value>false</value>
-                        </systemProperty>
-                     </systemProperties>
-                  </configuration>
-               </execution-->
             </executions>
          </plugin>
 
