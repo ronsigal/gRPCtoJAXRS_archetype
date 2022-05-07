@@ -13,21 +13,21 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Context;
 
-//import io.grpc.classes.TestServerInterceptor;
-
 import ${package}.${root-class}ServiceGrpcImpl;
 
 @Path("grpcserver")
 public class ${root-class}_Server {
 
+   private static final Logger logger = Logger.getLogger(${root-class}_Server.class.getName());
    private static ServletContext context;
    private static int PORT = 8082;
+   private Server server;
 
    @Path("start")
    @GET
    public String startGRPC(@Context HttpServletRequest request) throws Exception {
       context = request.getServletContext();
-      final CC1_Server server = new CC1_Server();
+      final ${root-class}_Server server = new ${root-class}_Server();
       new Thread() {
          public void run() {
             try {
@@ -52,8 +52,10 @@ public class ${root-class}_Server {
    @Path("context")
    @GET
    public String startContext(@Context HttpServletRequest request) throws Exception {
+      System.out.println(request.getClass());
       context = request.getServletContext();
-      final CC1_Server server = new CC1_Server();
+      final ${root-class}_Server server = new ${root-class}_Server();
+      System.out.println("context: " + context);
       return "Got " + this + " context";
    }
 
@@ -64,12 +66,9 @@ public class ${root-class}_Server {
    }
    
    static public ServletContext getContext() {
+      System.out.println("returning " + context);
       return context;
    }
-
-   private static final Logger logger = Logger.getLogger(${root-class}_Server.class.getName());
-
-   private Server server;
    
    /**
     * Start gRPC server.

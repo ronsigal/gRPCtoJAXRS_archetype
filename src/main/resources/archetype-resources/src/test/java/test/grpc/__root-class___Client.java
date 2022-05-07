@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import jaxrs.example.${root-class}_proto;
+import jaxrs.example.${root-class}_proto.GeneralEntityMessage;
 import jaxrs.example.${root-class}_proto.org_jboss_resteasy_example___CC2;
 import jaxrs.example.${root-class}_proto.org_jboss_resteasy_example___CC3;
 import jaxrs.example.${root-class}_proto.org_jboss_resteasy_example___CC4;
@@ -541,6 +543,26 @@ public class ${root-class}_Client
    }
 
    @Test
+   public void testParamsList() throws Exception {
+      System.out.println("running testParamsList()");
+      jaxrs.example.${root-class}_proto.GeneralEntityMessage.Builder builder = jaxrs.example.${root-class}_proto.GeneralEntityMessage.newBuilder();
+      builder.putHeaders("h1", ${root-class}_proto.Header.newBuilder().addValues("hv1").addValues("hv2").build());
+      GeneralEntityMessage gem = builder.setURL("http://localhost:8080" + "/p/params;m1=mv1;m1=mv2/pv1/list/pv2?q1=qv1&q1=qv2").build();
+      System.out.println("gem: " + gem);
+      jaxrs.example.${root-class}_proto.gString response;
+      try {
+         response = blockingStub.paramsList(gem);
+         System.out.println("response: " + response.getValue());
+         jaxrs.example.${root-class}_proto.gString expected = jaxrs.example.${root-class}_proto.gString.newBuilder().setValue("hv1hv2mv1mv2pv1pv2qv1qv2").build();
+         Assert.assertEquals(expected, response);
+      } catch (StatusRuntimeException e) {
+         e.printStackTrace();
+         Assert.fail("fail");
+         return;
+      }
+   }
+
+   @Test
    public void testSuspend() throws Exception {
       System.out.println("running testSuspend()");
       jaxrs.example.${root-class}_proto.GeneralEntityMessage.Builder messageBuilder = jaxrs.example.${root-class}_proto.GeneralEntityMessage.newBuilder();
@@ -591,7 +613,7 @@ public class ${root-class}_Client
       try {
          response = blockingStub.context(gem);
          System.out.println("response: " + response.getValue());
-         Assert.assertEquals("/jaxrs.example.grpc-0.0.1-SNAPSHOT", response.getValue());
+         Assert.assertEquals("/jaxrs.example.grpc-0.0.2-SNAPSHOT", response.getValue());
       } catch (StatusRuntimeException e) {
          e.printStackTrace();
          Assert.fail("fail");
